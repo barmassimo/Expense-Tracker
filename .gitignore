@@ -35,7 +35,7 @@ nosetests.xml
 .pydevproject
 
 # Database file
-/src/db/db.sqlite3
+/src/db/*
 
 # Static files (copied by manage.py collectstatic)
 /src/static

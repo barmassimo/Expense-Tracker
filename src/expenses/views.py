@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from datetime import date, timedelta
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
@@ -84,7 +85,9 @@ class StatsView(TemplateView):
     
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        context['report'] = Expense.objects.get_expense_report(Expense.objects.all());
+        expenses = Expense.objects.all()
+        
+        context['report'] = Expense.objects.get_expense_report(expenses);
         
         return self.render_to_response(context)    
         

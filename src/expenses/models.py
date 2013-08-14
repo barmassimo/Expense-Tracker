@@ -22,11 +22,14 @@ class ExpenseManager(models.Manager):
     def get_expense_report(self, expenses):
         report = {}
         
+        if (len(expenses) == 0): 
+            return { 'total': 0, 'total_per_month': 0 }
+        
         report['from_date'] = min(e.date for e in expenses)
         report['to_date'] = max(e.date for e in expenses)
-        report['days'] = (report['to_date'] - report['from_date']).days
+        report['days'] = (report['to_date'] - report['from_date']).days + 1
         report['months'] = float(report['days']) / float(30) 
-        
+
         expenses_grouped = []
         for cat in ExpenseCategory.objects.all():
             expenses_grouped.append ({'expenseCategory': cat, 'total': sum([ e.value for e in expenses if e.category == cat])})
@@ -34,7 +37,7 @@ class ExpenseManager(models.Manager):
         report['expenses_grouped'] = expenses_grouped
         
         report['total'] = sum(e.value for e in expenses)
-        report['total_per_month'] =  float(report['total']) / report['months'] 
+        report['total_per_month'] = float(report['total']) / report['months']
         
         return report
 

@@ -15,3 +15,7 @@ ul.errorlist {
 .helptext {
     color: #aaa
 }
+
+.big_font {
+    font-size: 120%;
+}

@@ -42,8 +42,8 @@ class ExpenseReportTest(TestCase):
         
         self.assertEqual(report['from_date'], date(2013,1,1))
         self.assertEqual(report['to_date'], date(2013,3,31))
-        self.assertEqual(report['days'],89)
-        self.assertEqual(report['months'], float(89) / float(30))
+        self.assertEqual(report['days'],90)
+        self.assertEqual(report['months'], float(90) / float(30))
         
     def test_expense_report_grouping(self):
         report = Expense.objects.get_expense_report(Expense.objects.all());
