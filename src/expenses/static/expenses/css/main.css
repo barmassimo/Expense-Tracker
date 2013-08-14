@@ -1,0 +1,17 @@
+ul.errorlist {
+        margin: 0;
+        padding: 0;
+}
+
+.errorlist li {
+        background-color: red;
+        color: white;
+        font-weight:bold;
+        display: inline;
+        padding: 4px 5px;
+        border-radius: 4px;
+}
+
+.helptext {
+    color: #aaa
+}

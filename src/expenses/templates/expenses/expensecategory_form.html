@@ -1,0 +1,14 @@
+{% extends "expenses/_base.html" %}
+
+{% block title %}Category{% endblock title %}
+{% block active_page %}categories{% endblock active_page %}
+
+{% block content %}
+<form action="" method="post"> 
+    {{form.as_p}}
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" name="submit" id="submit" value="submit" />
+    or
+    <a href="{% url 'expense_category_list' %}">return to the list</a>
+</form>
+{% endblock content %}

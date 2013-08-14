@@ -1,0 +1,16 @@
+{% extends "expenses/_base.html" %}
+
+{% block title %}Delete Category {{ object.description }}?{% endblock title %}
+{% block active_page %}categories{% endblock active_page %}
+
+{% block content %}
+<p>Because I'm a little bit lazy, there's not "undo" :)</p>
+<p class="alert"><strong>Warning!</strong> all expenses in this category will be deleted.</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" name="submit" id="submit" value="delete" />
+    or
+    <a href="{% url 'expense_category_list' %}">return to the list</a>
+</form>
+{% endblock content %}

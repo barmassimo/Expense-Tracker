@@ -14,25 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls import patterns, include, url
+from django.forms import ModelForm
 
-from django.views.generic import RedirectView
+from .models import Expense
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+class ExpenseForm(ModelForm):
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'expenseTracker.views.home', name='home'),
-    # url(r'^expenseTracker/', include('expenseTracker.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^expenses/', include('expenses.urls')),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/expenses/img/favicon.ico')),
-
-)
+    class Meta:
+        model = Expense

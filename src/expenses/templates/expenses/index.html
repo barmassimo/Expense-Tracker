@@ -1,0 +1,23 @@
+{% extends "expenses/_base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div class="hero-unit">
+<h1>Welcome to Expense Tracker</h1>
+<p>
+This is a simple expense tracker, a demonstration of Django and Bootstrap.
+</p>
+<p>
+<a href="{% url 'expense_create' %}" class="btn btn-primary btn-large">Add a new expense &raquo;</a>
+</p>
+<p>
+or...
+</p>
+<p>
+<a href="{% url 'expense_list' %}" class="btn btn-primary">See your expenses &raquo;</a>
+<a href="{% url 'expense_category_list' %}" class="btn btn-primary">Manage your categories &raquo;</a>
+<a href="{% url 'stats' %}" class="btn btn-primary">See your stats &raquo;</a>
+</p>
+</div>
+{% endblock content %}

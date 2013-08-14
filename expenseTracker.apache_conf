@@ -1,0 +1,11 @@
+WSGIScriptAlias / /mnt/VM/ExpenseTracker/src/expenseTracker/wsgi.py
+WSGIPythonPath /mnt/VM/ExpenseTracker/src:/home/mlab01/virtualenvs/ExpenseTrackerVirtualEnv/lib/python2.7/site-packages
+
+Alias /static /mnt/VM/ExpenseTracker/src/static
+
+<Directory /mnt/VM/ExpenseTracker/src/expenseTracker>
+<Files wsgi.py>
+Order deny,allow
+Allow from all
+</Files>
+</Directory>

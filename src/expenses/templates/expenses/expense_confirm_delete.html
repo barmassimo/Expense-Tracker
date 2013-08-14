@@ -1,0 +1,15 @@
+{% extends "expenses/_base.html" %}
+
+{% block title %}Delete Expense #{{ object.pk }}?{% endblock title %}
+{% block active_page %}expenses{% endblock active_page %}
+
+{% block content %}
+<p>Because I'm a little bit lazy, there's not "undo" :)</p>
+ 
+<form action="" method="post">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="submit" name="submit" id="submit" value="delete" />
+    or
+    <a href="{% url 'expense_list' %}">return to the list</a>
+</form>
+{% endblock content %}

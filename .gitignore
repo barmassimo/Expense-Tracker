@@ -36,3 +36,6 @@ nosetests.xml
 
 # Database file
 /src/db/db.sqlite3
+
+# Static files (copied by manage.py collectstatic)
+/src/static

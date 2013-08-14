@@ -1,0 +1,23 @@
+{% extends "expenses/_base.html" %}
+
+{% block title %}Stats{% endblock title %}
+{% block active_page %}stats{% endblock active_page %}
+
+{% block content %}
+<p>
+<h5>Expenses from {{ report.from_date }} to {{ report.to_date }}</h5>
+</p>
+<p>
+<ul class="nav nav-list">
+    {% for object in report.expenses_grouped %}
+        <li>
+            <span style="background-color: #{{ object.expenseCategory.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            <strong>{{ object.expenseCategory }}</strong> {{ object.total | floatformat:2 }} 
+        </li>
+    {% endfor %}
+        <li class="divider"></li>
+    <li><strong>Total:</strong> {{ report.total | floatformat:2 }} </li>  
+    <li><strong>Per month:</strong> {{ report.total_per_month | floatformat:2 }} </li>      
+</ul>
+</p>
+{% endblock content %}
