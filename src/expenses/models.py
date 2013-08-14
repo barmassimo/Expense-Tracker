@@ -32,11 +32,11 @@ class ExpenseManager(models.Manager):
 
         expenses_grouped = []
         for cat in ExpenseCategory.objects.all():
-            expenses_grouped.append ({'expenseCategory': cat, 'total': sum([ e.value for e in expenses if e.category == cat])})
+            expenses_grouped.append ({'expenseCategory': cat, 'total': sum([ e.amount for e in expenses if e.category == cat])})
         
         report['expenses_grouped'] = expenses_grouped
         
-        report['total'] = sum(e.value for e in expenses)
+        report['total'] = sum(e.amount for e in expenses)
         report['total_per_month'] = float(report['total']) / report['months']
         
         return report
@@ -59,7 +59,7 @@ class ExpenseCategory(models.Model):
         
 class Expense(models.Model):
     description = models.CharField(max_length=1000)
-    value = models.DecimalField(max_digits=18, decimal_places=2, default=0)
+    amount = models.DecimalField(max_digits=18, decimal_places=2, default=0)
     date = models.DateField(default=date.today())
     category = models.ForeignKey(ExpenseCategory)
     

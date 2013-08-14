@@ -14,7 +14,7 @@
         <tr>
             <th>Id</th>
             <th>Description</th>
-            <th>Value</th>
+            <th>Amount</th>
             <th>Date</th>
             <th>Category</th>
             <th></th>
@@ -24,7 +24,7 @@
         <tr>
             <th></th>
             <td>{{ form.description }}{{ form.description.errors }}</td>
-            <td>{{ form.value }}{{ form.value.errors }}</td>    
+            <td>{{ form.amount | floatformat:2  }}{{ form.amount.errors }}</td>    
             <td>{{ form.date }}{{ form.date.errors }}</td>
             <td>{{ form.category }}{{ form.category.errors }}</td>
             <td><input class="btn btn-primary" type="submit" name="submit" id="submit" value="add new" /></td>
@@ -33,7 +33,7 @@
         <tr>
             <th>{{ object.pk }}</th>
             <td><span style="background-color: #{{ object.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="{% url 'expense_update' object.pk %}">{{ object.description }}</a></td>
-            <td>{{ object.value }}</td>    
+            <td>{{ object.amount }}</td>    
             <td>{{ object.date }}</td>
             <td><span style="background-color: #{{ object.category.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> {{ object.category }}</td>
             <td>
