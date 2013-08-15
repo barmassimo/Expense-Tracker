@@ -19,3 +19,7 @@ ul.errorlist {
 .big_font {
     font-size: 120%;
 }
+
+.no_fluid {
+    width: auto;
+}
