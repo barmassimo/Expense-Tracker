@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     
     'expenses',
+    #'mockups',
 )
 
 # A sample logging configuration. The only tangible logging

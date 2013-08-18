@@ -33,7 +33,7 @@
         <tr>
             <th>{{ object.pk }}</th>
             <td><span style="background-color: #{{ object.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="{% url 'expense_update' object.pk %}">{{ object.description }}</a></td>
-            <td>{{ object.amount }}</td>    
+            <td><strong>{{ object.amount }}</strong></td>    
             <td>{{ object.date }}</td>
             <td><span style="background-color: #{{ object.category.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> {{ object.category }}</td>
             <td>

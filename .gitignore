@@ -39,3 +39,6 @@ nosetests.xml
 
 # Static files (copied by manage.py collectstatic)
 /src/static
+
+# Swap files
+*.swp
