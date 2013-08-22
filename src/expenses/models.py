@@ -66,6 +66,6 @@ class Expense(models.Model):
     objects = ExpenseManager() 
         
     class Meta:
-        ordering = ['-date']
+        ordering = ['-date', '-pk']
     
 
