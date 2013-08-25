@@ -17,27 +17,35 @@
 from datetime import date
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import Min, Max, Sum, Count
 
 class ExpenseManager(models.Manager):
-    def get_expense_report(self, expenses):
-        report = {}
+    def get_expense_report(self):
         
-        if (len(expenses) == 0): 
+        aggregate_data = Expense.objects.aggregate(Min('date'), Max('date'), Count('pk'), Sum('amount'))
+        
+        if (aggregate_data['pk__count'] == 0): 
             return { 'total': 0, 'total_per_month': 0 }
         
-        report['from_date'] = min(e.date for e in expenses)
-        report['to_date'] = max(e.date for e in expenses)
+        report = {}
+        
+        report['from_date'] = aggregate_data['date__min']
+        report['to_date'] = aggregate_data['date__max']
         report['days'] = (report['to_date'] - report['from_date']).days + 1
         report['months'] = float(report['days']) / float(30) 
+        report['total'] = aggregate_data['amount__sum']
+        report['total_per_month'] = float(report['total']) / report['months']
 
+        categories = dict((x.pk, x) for x in ExpenseCategory.objects.all())
+        
+        category_data = Expense.objects.values('category').annotate(total=Sum('amount')).order_by('category')
+        category_data = sorted(category_data, cmp=lambda x,y: int(y['total'] - x['total']))
+        
         expenses_grouped = []
-        for cat in ExpenseCategory.objects.all():
-            expenses_grouped.append ({'expenseCategory': cat, 'total': sum([ e.amount for e in expenses if e.category == cat])})
+        for c in category_data:
+            expenses_grouped.append ({'expenseCategory': categories[c['category']], 'total': c['total'] })
         
         report['expenses_grouped'] = expenses_grouped
-        
-        report['total'] = sum(e.amount for e in expenses)
-        report['total_per_month'] = float(report['total']) / report['months']
         
         return report
 
