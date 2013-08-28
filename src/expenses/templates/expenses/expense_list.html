@@ -12,7 +12,6 @@
 <table class="table table-striped table-hover table-condensed no_fluid">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Description</th>
             <th>Amount</th>
             <th>Date</th>
@@ -22,7 +21,6 @@
     </thead>
     <tbody>
         <tr>
-            <th></th>
             <td>{{ form.description }}{{ form.description.errors }}</td>
             <td>{{ form.amount }}{{ form.amount.errors }}</td>    
             <td>{{ form.date }}{{ form.date.errors }}</td>
@@ -31,7 +29,6 @@
         </tr>
     {% for object in object_list %}
         <tr>
-            <th>{{ object.pk }}</th>
             <td><span style="background-color: #{{ object.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="{% url 'expense_update' object.pk %}">{{ object.description }}</a></td>
             <td><strong>{{ object.amount | floatformat:2  }}</strong></td>    
             <td>{{ object.date }}</td>
