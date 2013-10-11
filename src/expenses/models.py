@@ -51,7 +51,7 @@ class ExpenseManager(models.Manager):
 
 class ExpenseCategory(models.Model):
 
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, unique=True)
     color = models.CharField(max_length=6, help_text="Example: 0000FF")
     
     def __unicode__(self):
