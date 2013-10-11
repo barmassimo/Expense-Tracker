@@ -7,33 +7,33 @@
     <title>Expense Tracker {%app_version_info%}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/favicon.ico" rel="icon" />
-    <link href="/favicon.ico" rel="apple-touch-icon" />
+    <link href="/favicon.ico" rel="shortcut icon" />
     
     <link href="{% static "expenses/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" >
-    <link href="{% static "expenses/bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet" >
+    <link href="{% static "expenses/bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet" >
     <link href="{% static "expenses/bootstrap/css/datepicker.css" %}" rel="stylesheet" >
     <link href="{% static "expenses/css/main.css" %}" rel="stylesheet" >
 
     {% block extra_head %}{% endblock extra_head %}      
 </head>
 <body>
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="brand" href="{% url 'index' %}">Expense Tracker</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
+                <a class="navbar-brand" href="{% url 'index' %}">Expense Tracker</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
                         <li id="nav_add_new_expense"><a href="{% url 'expense_create' %}">Add new expense</a></li>
                         <li id="nav_expenses"><a href="{% url 'expense_list' %}">Expenses</a></li>
                         <li id="nav_categories"><a href="{% url 'expense_category_list' %}">Categories</a></li>
                         <li id="nav_stats"><a href="{% url 'stats' %}">Stats</a></li>
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
     </div>

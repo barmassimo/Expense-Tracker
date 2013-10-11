@@ -12,3 +12,5 @@
     <a href="{% url 'expense_list' %}">return to the list</a>
 </form>
 {% endblock content %}
+
+{% block extra_script %}{% include "expenses/_handle_form_errors.html" %}{% endblock extra_script %}

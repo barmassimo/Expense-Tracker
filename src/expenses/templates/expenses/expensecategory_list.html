@@ -18,8 +18,8 @@
         <tr>
             <td><span style="background-color: #{{ object.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href="{% url 'expense_category_update' object.pk %}">{{ object.description }}</a></td>
             <td>
-                <a title="edit" class="btn btn-small" href="{% url 'expense_category_update' object.pk %}"><i class="icon-edit"></i></a>
-                <a title="delete" class="btn btn-small" href="{% url 'expense_category_delete' object.pk %}"><i class="icon-remove"></i></a>
+                <a title="edit" class="btn btn-small" href="{% url 'expense_category_update' object.pk %}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a title="delete" class="btn btn-small" href="{% url 'expense_category_delete' object.pk %}"><i class="glyphicon glyphicon-remove"></i></a>
             </td>
         </tr>
     {% endfor %}

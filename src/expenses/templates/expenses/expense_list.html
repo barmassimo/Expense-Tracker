@@ -34,8 +34,8 @@
             <td>{{ object.date }}</td>
             <td><span style="background-color: #{{ object.category.color }};">&nbsp;&nbsp;&nbsp;&nbsp;</span> {{ object.category }}</td>
             <td>
-                <a title="edit" class="btn btn-small" href="{% url 'expense_update' object.pk %}"><i class="icon-edit"></i></a>
-                <a title="delete" class="btn btn-small" href="{% url 'expense_delete' object.pk %}"><i class="icon-remove"></i></a>
+                <a title="edit" class="btn btn-small" href="{% url 'expense_update' object.pk %}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a title="delete" class="btn btn-small" href="{% url 'expense_delete' object.pk %}"><i class="glyphicon glyphicon-remove"></i></a>
             </td>
         </tr>
     {% endfor %}
@@ -46,3 +46,5 @@
 {% include "expenses/_paginator.html" %}
 
 {% endblock content %}
+
+{% block extra_script %}{% include "expenses/_handle_form_errors.html" %}{% endblock extra_script %}

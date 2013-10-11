@@ -13,6 +13,6 @@ GNU GENERAL PUBLIC LICENSE V 3
 
 * Django 1.5.2
 * Python 2.7
-* Bootstrap 2.3.2 
+* Bootstrap 3.0.0
 * jQuery 2.0.3
 
