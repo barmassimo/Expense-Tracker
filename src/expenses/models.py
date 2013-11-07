@@ -39,7 +39,7 @@ class ExpenseManager(models.Manager):
         categories = dict((x.pk, x) for x in ExpenseCategory.objects.all())
         
         category_data = Expense.objects.values('category').annotate(total=Sum('amount')).order_by('category')
-        category_data = sorted(category_data, cmp=lambda x,y: int(y['total'] - x['total']))
+        category_data = sorted(category_data, key=lambda x: int(-1 * x['total']))
         
         expenses_grouped = []
         for c in category_data:

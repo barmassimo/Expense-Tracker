@@ -11,8 +11,8 @@ GNU GENERAL PUBLIC LICENSE V 3
 
 ## Current environment: 
 
-* Django 1.5.2
-* Python 2.7
+* Django 1.6
+* Python 3.3.2
 * Bootstrap 3.0.0
 * jQuery 2.0.3
 
