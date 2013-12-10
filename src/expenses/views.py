@@ -22,6 +22,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.base import View, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse, reverse_lazy
+import json
+import time
 
 from .models import Expense, ExpenseCategory
 from .forms import ExpenseForm
@@ -31,7 +33,7 @@ class IndexView(TemplateView):
     
 class ExpenseCategoryList(ListView):
     model = ExpenseCategory
-    paginate_by = 10
+    paginate_by = 5
     
 class ExpenseCategoryCreate(CreateView):
     model = ExpenseCategory
@@ -51,7 +53,7 @@ class ExpenseList(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context['form'] = ExpenseForm() 
-        context['object_list'] = Expense.objects.all()
+        #context['object_list'] = Expense.objects.all() # now loaded via ajax
         return self.render_to_response(context)
         
     def post(self, request, *args, **kwargs):
@@ -62,9 +64,33 @@ class ExpenseList(TemplateView):
 
         context = self.get_context_data(**kwargs)
         context['form'] = form
-        context['object_list'] = Expense.objects.all()
-        return self.render_to_response(context)    
+        #ontext['object_list'] = Expense.objects.all() # now loaded via ajax
+        return self.render_to_response(context)
+
+class ExpenseListJson(TemplateView):
+    paginate_by = 25
     
+    def get(self, request, *args, **kwargs):
+        
+        if 'page' in request.GET:
+            page=int(request.GET['page'])
+            expenses = Expense.objects.select_related('category').all()[self.paginate_by*(page-1):self.paginate_by*page]
+            
+            items = []
+            for item in expenses:
+                items.append( { 
+                    'pk': item.pk, 
+                    'amount': str(item.amount), 
+                    'date': str(item.date), 
+                    'description': item.description,
+                    'category_description': item.category.description,
+                    'category_color': item.category.color
+                })
+            
+            return HttpResponse(json.dumps({'items': items, 'total': Expense.objects.count()}), content_type='application/json')
+        else:
+            raise ("missing page parameter")
+        
 class ExpenseCreate(CreateView):
     model = Expense
     template_name="expenses/expense_form_new.html"
@@ -85,9 +111,10 @@ class StatsView(TemplateView):
     
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        context['report'] = Expense.objects.get_expense_report();
+        context['report'] = Expense.objects.get_expense_report()
         
         return self.render_to_response(context)    
         
-        
+def dummy_view(request, id=None):
+    raise Exception("dummy view")
         

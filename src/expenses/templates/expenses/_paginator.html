@@ -1,8 +1,7 @@
 {% if is_paginated %}
-       
-        <div class="pagination">
+        <div>
         <div>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</div>
-            <ul>
+            <ul class="pagination">
                 {% if page_obj.has_previous %}
                     <li><a href="{% url 'expense_category_list' %}?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
                 {% else %}

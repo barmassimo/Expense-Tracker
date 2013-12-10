@@ -22,9 +22,12 @@ urlpatterns = patterns('',
     url(r'^index$', IndexView.as_view(), name='index'),
 
     url(r'^expense_list$', ExpenseList.as_view(), name='expense_list'),
+    url(r'^expense_list_json$', ExpenseListJson.as_view(), name='expense_list_json'),
     url(r'^expense_create$', ExpenseCreate.as_view(), name='expense_create'),
     url(r'^expense_update/(?P<pk>\d+)/$', ExpenseUpdate.as_view(), name='expense_update'),
+    url(r'^expense_update$', dummy_view, name='expense_update_dummy'),
     url(r'^expense_delete/(?P<pk>\d+)/$', ExpenseDelete.as_view(), name='expense_delete'),    
+    url(r'^expense_delete$', dummy_view, name='expense_delete_dummy'),    
     
     url(r'^expense_category_list$', ExpenseCategoryList.as_view(), name='expense_category_list'),
     url(r'^expense_category_create$', ExpenseCategoryCreate.as_view(), name='expense_category_create'),
