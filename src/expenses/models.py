@@ -54,7 +54,7 @@ class ExpenseCategory(models.Model):
     description = models.CharField(max_length=1000, unique=True)
     color = models.CharField(max_length=6, help_text="Example: 0000FF")
     
-    def __unicode__(self):
+    def __str__(self):
         return self.description
         
     def get_absolute_url(self):
@@ -70,6 +70,9 @@ class Expense(models.Model):
     amount = models.DecimalField(max_digits=18, decimal_places=2, default=0)
     date = models.DateField(default=date.today())
     category = models.ForeignKey(ExpenseCategory)
+    
+    def __str__(self):
+        return self.description    
     
     objects = ExpenseManager() 
         
