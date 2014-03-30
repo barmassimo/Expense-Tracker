@@ -28,13 +28,13 @@
     
     <div infinite-scroll="loadExpenses()">
         <div class="row" ng-repeat="object in expenses" >
-            <div class="col-xs-3"><a href="{% url 'expense_update_dummy'%}/{[{object.pk}]}"> {[{object.description}]}</a></div>
+            <div class="col-xs-3"><a href="{% url 'expense_update' '' %}{[{object.pk}]}">{[{object.description}]}</a></div>
             <div class="col-xs-2"><strong>{[{object.amount | number:2}]}</strong></div>    
             <div class="col-xs-2">{[{object.date | date}]}</div>
             <div class="col-xs-2"><span style="background-color: #{[{ object.category_color }]};">&nbsp;&nbsp;&nbsp;&nbsp;</span> {[{ object.category_description }]}</div>
             <div class="col-xs-2">
-                <a title="edit" class="btn btn-small" href="{% url 'expense_update_dummy' %}/{[{object.pk}]}"><i class="glyphicon glyphicon-edit"></i></a>
-                <a title="delete" class="btn btn-small" href="{% url 'expense_delete_dummy' %}/{[{object.pk}]}"><i class="glyphicon glyphicon-remove"></i></a>
+                <a title="edit" class="btn btn-small" href="{% url 'expense_update' '' %}{[{object.pk}]}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a title="delete" class="btn btn-small" href="{% url 'expense_delete' '' %}{[{object.pk}]}"><i class="glyphicon glyphicon-remove"></i></a>
             </div>
         </div>
     </div>

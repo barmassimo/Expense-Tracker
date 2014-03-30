@@ -114,7 +114,5 @@ class StatsView(TemplateView):
         context['report'] = Expense.objects.get_expense_report()
         
         return self.render_to_response(context)    
-        
-def dummy_view(request, id=None):
-    raise Exception("dummy view")
+
         
