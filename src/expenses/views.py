@@ -53,7 +53,7 @@ class ExpenseList(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context['form'] = ExpenseForm() 
-        #context['object_list'] = Expense.objects.all() # now loaded via ajax
+        # context['object_list'] = Expense.objects.all() # now loaded via ajax
         return self.render_to_response(context)
         
     def post(self, request, *args, **kwargs):
@@ -64,7 +64,7 @@ class ExpenseList(TemplateView):
 
         context = self.get_context_data(**kwargs)
         context['form'] = form
-        #ontext['object_list'] = Expense.objects.all() # now loaded via ajax
+        # context['object_list'] = Expense.objects.all() # now loaded via ajax
         return self.render_to_response(context)
 
 class ExpenseListJson(TemplateView):
@@ -114,7 +114,5 @@ class StatsView(TemplateView):
         context['report'] = Expense.objects.get_expense_report()
         
         return self.render_to_response(context)    
-        
-def dummy_view(request, id=None):
-    raise Exception("dummy view")
+
         
