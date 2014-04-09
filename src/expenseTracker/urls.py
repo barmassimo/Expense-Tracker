@@ -1,6 +1,6 @@
 # ExpenseTracker - a simple, Django based expense tracker.
 # Copyright (C) 2013 Massimo Barbieri - http://www.massimobarbieri.it
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^expenses/', include('expenses.urls')),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/expenses/img/favicon.ico')),
-)
+                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^expenses/', include('expenses.urls')),
+                       url(r'^favicon\.ico$', RedirectView.as_view(
+                           url='/static/expenses/img/favicon.ico')),
+                       )
