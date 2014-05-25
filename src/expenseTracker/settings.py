@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'pjh2o-hpcx2plkb^d)_5ja5g82$g_j(321b+jovoo&6fvk()2z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['expenseTracker.massimobarbieri.it']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mb-expense-tracker.appspot.com']
 
 
 # Application definition
