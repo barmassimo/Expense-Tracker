@@ -1,0 +1,1 @@
+from expenseTracker.settings import *

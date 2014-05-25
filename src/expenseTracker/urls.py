@@ -24,4 +24,5 @@ urlpatterns = patterns('',
                        url(r'^expenses/', include('expenses.urls')),
                        url(r'^favicon\.ico$', RedirectView.as_view(
                            url='/static/expenses/img/favicon.ico')),
+                       url(r'^$', RedirectView.as_view(url= '/expenses/index')),
                        )

@@ -56,12 +56,24 @@ WSGI_APPLICATION = 'expenseTracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db/db.sqlite3'),
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    # Running on production App Engine
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/mb-expense-tracker:db001',
+            'NAME': 'expensetracker',
+            'USER': 'root',
+        },
     }
-}
+else:
+    # Running in development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db/db.sqlite3'),
+        },         
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
