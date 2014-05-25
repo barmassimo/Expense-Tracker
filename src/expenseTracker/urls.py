@@ -17,12 +17,17 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import RedirectView
 from django.contrib import admin
+
+import os
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^admin/', include(admin.site.urls)),
                        url(r'^expenses/', include('expenses.urls')),
-                       url(r'^favicon\.ico$', RedirectView.as_view(
-                           url='/static/expenses/img/favicon.ico')),
+                       url(r'^favicon\.ico$', RedirectView.as_view(url='/static/expenses/img/favicon.ico')),
                        url(r'^$', RedirectView.as_view(url= '/expenses/index')),
                        )
+
+# Disable admin on Google App Engine
+if not os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    urlpatterns.append(url(r'^admin/', include(admin.site.urls)))
