@@ -20,6 +20,8 @@ from django.contrib import admin
 
 import os
 
+from .gae_support import runs_on_gae
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -30,5 +32,5 @@ urlpatterns = patterns('',
                        )
 
 # Disable admin on Google App Engine
-if not os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+if not runs_on_gae():
     urlpatterns.append(url(r'^admin/', include(admin.site.urls)))

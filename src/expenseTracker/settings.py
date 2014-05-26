@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+from .gae_support import runs_on_gae
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -56,7 +58,7 @@ WSGI_APPLICATION = 'expenseTracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+if runs_on_gae():
     # Running on production App Engine
     DATABASES = {
         'default': {
